@@ -1,0 +1,71 @@
+<template>
+    <div class="page-wrapper">
+        <div class="container-fluid">
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h3 class="text-themecolor">Персональные виджеты</h3>
+                    <div>
+                        <router-link class="btn btn-info" :to="{name: 'widgets.create'}">
+                            Создать новый виджет
+                        </router-link>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <transition  name="fade">
+                        <div class="card" v-if="!loading">
+                            <table class="table table-responsive" style="vertical-align: top;">
+                                <tr v-for="(item, key) in smartWidgets">
+                                    <td>{{ ++ key }}</td>
+                                    <td>{{item.title}}</td>
+                                    <td><img v-bind:src="config.apiUrl + '/' +item.image" alt="" style="height: 50px"></td>
+                                    <td>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="inputGroupPrepend2">OBS</span>
+                                            </div>
+                                            <input type="text" class="form-control"
+                                                   :value="config.mainUrl + '/smart-widget-id/' + item.id">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <router-link class="btn btn-sm btn-success m-t-5" :to="{name:'widgets.edit', params:{id:item.id}}"><span class="fa fa-edit"></span></router-link>
+                                        <button class="btn btn-sm btn-danger m-t-5" v-on:click="remove(item.id)"><span class="fa fa-times"></span></button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </transition>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+    import {mapState} from 'vuex';
+    import config from 'config';
+
+    export default {
+        computed: {
+            config:function () {
+                return config;
+            },
+            loading: function () {
+                return this.$store.state.smartWidget.loading;
+            },
+            smartWidgets: function () {
+                return this.$store.state.smartWidget.widgets;
+            },
+        },
+        created() {
+            this.$store.dispatch('smartWidget/getAll');
+        },
+        methods: {
+            remove(id){
+                this.$store.dispatch('smartWidget/remove', {id: id});
+            }
+        }
+    };
+</script>

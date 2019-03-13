@@ -1,0 +1,98 @@
+@import 'bit-boss';
+
+.router-link-exact-active {
+  color: #fff !important;
+}
+
+.login-register {
+  background: #383f48;
+}
+
+html, body {
+  height: 100%;
+}
+
+#main-wrapper {
+  background: #383f48;
+  min-height: 100%;
+  height: 100%;
+}
+
+.overlay-builder {
+  height: 100%;
+}
+
+.overlay-boss {
+  background: #4a8caf;
+  height: 100%;
+}
+
+.boss-overlay {
+  position: absolute;
+  width: 100%;
+  height: 120px;
+}
+
+.boss-overlay {
+  .setup {
+    cursor: move;
+    background: #2131c7;
+    width: 20px;
+    height: 20px;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+  }
+}
+
+.left-sidebar-overlay{
+  width: 350px;
+  overflow-y: scroll;
+}
+
+.preloader{
+  background: #000;
+}
+
+.topbar .profile-pic {
+  width: 40px !important;
+}
+
+.duck{
+  width: 50px;
+  height: 50px;
+  background: #4da3ff;
+  border-radius: 100%;
+}
+
+.topbar .top-navbar .navbar-nav > .nav-item > .nav-link{
+  padding-left: 7px;
+  padding-right: 0;
+  font-size: 17px;
+  line-height: 20px;
+}
+
+.light-logo-streamshard{
+  background-image: url('../addons/img/logo.png');
+  width: 171px;
+  height: 50px;
+  display: inline-block;
+  position: relative;
+  top: 6px;
+}
+
+
+.settings-avatar{
+  width: 70px;
+  height: 70px;
+  float: left;
+}
+
+.settings-text{
+  margin-left: 10px;
+  float: left;
+}
+
+.settings-twitch-connect{
+  font-size: 21px;
+}
