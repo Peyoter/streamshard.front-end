@@ -9,9 +9,9 @@
 
 ## Для входа
 
-login: admin@admin.ru
+login: admin@admin.ru123
 
-password: Password123
+password: Password11231
 
 
 ## Убить процесс на винде
