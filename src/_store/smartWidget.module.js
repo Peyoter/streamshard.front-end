@@ -5,7 +5,13 @@ export const smartWidget = {
     namespaced: true,
     state: {
         loading: true,
-        element: {},
+        element: {
+            title:'',
+            nick_name: '',
+            donation_handler: 0,
+            subscribe_handler: 0,
+            subgift_handler: 0
+        },
         widgets: [],
     },
     actions: {
@@ -23,6 +29,17 @@ export const smartWidget = {
             smartWidgetService.show(data)
                 .then(
                     data => commit('getShowSuccess', data),
+                    error => commit('getAllFailure', error)
+                )
+        },
+
+        update({commit}, formData) {
+            commit('getAllRequest');
+            smartWidgetService.update(formData)
+                .then(
+                    () => {
+                        router.push('/widgets');
+                    },
                     error => commit('getAllFailure', error)
                 )
         },

@@ -74,5 +74,5 @@ module.exports = {
                 scope: 'user_read+chat:read+channel_subscriptions',
             }
         })
-    }
+    },
 }

@@ -7,7 +7,8 @@ export const smartWidgetService = {
     create,
     remove,
     store,
-    show
+    show,
+    update
 };
 
 function getAll() {
@@ -73,5 +74,17 @@ function show(data) {
     };
 
     return fetch(`${config.apiUrl}/smart_widgets/` + data.id, options)
+        .then(handleResponse);
+}
+
+function update(formData) {
+
+    const options = {
+        method: 'put',
+        headers: authHeader(),
+        body: formData,
+    };
+
+    return fetch(`${config.apiUrl}/smart_widgets/` + formData.id, options)
         .then(handleResponse);
 }

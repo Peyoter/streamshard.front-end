@@ -48,7 +48,7 @@ export const router = new Router({
                     },
                 },
                 {
-                    path: '/widgets/:id/edit',
+                    path: '/widgets-:id-edit',
                     name: 'widgets.edit',
                     components: {
                         adminContent: WidgetsForm
