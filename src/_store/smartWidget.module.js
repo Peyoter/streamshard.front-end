@@ -6,7 +6,7 @@ export const smartWidget = {
     state: {
         loading: true,
         element: {
-            title:'',
+            title: '',
             nick_name: '',
             donation_handler: 0,
             subscribe_handler: 0,
@@ -22,6 +22,14 @@ export const smartWidget = {
                     data => commit('getAllSuccess', data),
                     error => commit('getAllFailure', error)
                 );
+        },
+
+        show({commit}, data) {
+            smartWidgetService.show(data)
+                .then(
+                    data => commit('getShowSuccess', data),
+                    error => commit('getAllFailure', error)
+                )
         },
 
         edit({commit}, data) {
@@ -43,7 +51,6 @@ export const smartWidget = {
                     error => commit('getAllFailure', error)
                 )
         },
-
         store({commit}, formData) {
             commit('getAllRequest');
             smartWidgetService.store(formData)

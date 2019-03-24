@@ -68,7 +68,7 @@
             ws.on('open', () => {
                 $('.connection-status').text('connected')
                 subscribeToChannel($that);
-                ws.getSubscription('chat:'+  this.boss.user_id).emit('message', {'message': 'push'});
+                //ws.getSubscription('chat:'+  this.boss.user_id).emit('message', {'message': 'push'});
             });
             ws.on('error', () => {
                 $('.connection-status').text('Ошибка')

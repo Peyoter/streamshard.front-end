@@ -7,6 +7,11 @@ export const settings = {
         },
         twitch_parameters:{
 
+        },
+    },
+    getters:{
+        getSettings: state => {
+            return state.parameters;
         }
     },
     actions: {

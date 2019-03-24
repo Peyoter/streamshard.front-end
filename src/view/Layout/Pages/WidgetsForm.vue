@@ -25,6 +25,12 @@
                                     </div>
 
                                     <div class="form-group">
+                                        <label>Текст сообщения</label>
+                                        <input type="text" class="form-control" placeholder=""
+                                               v-model="text">
+                                    </div>
+
+                                    <div class="form-group">
                                         <label>Музыка</label>
                                         <input class="form-control" type="file" id="file" ref="music"
                                                v-on:change="handleMusicUpload()">
@@ -37,6 +43,14 @@
                                         </div>
                                         <input type="file" class="form-control" id="image" ref="image"
                                                v-on:change="handleImageUpload()">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Громкость: {{ volume * 100 }} <span>%</span></label>
+                                        <div>
+                                            <input type="range" id="start" v-model="volume"
+                                                   min="0" max="1" step="0.1">
+                                        </div>
                                     </div>
 
                                     <div class="form-group">
@@ -171,7 +185,7 @@
             },
             volume: {
                 get() {
-                    return this.$store.state.smartWidget.element.subgift_handler;
+                    return this.$store.state.smartWidget.element.volume;
                 },
                 set(volume) {
                     this.$store.commit('smartWidget/updateElement', {volume: volume})
@@ -184,13 +198,16 @@
         methods: {
             submitForm() {
                 const formData = new FormData();
+                console.log(this.$store.state.smartWidget.element.text);
                 formData.append('title', this.$store.state.smartWidget.element.title);
                 formData.append('nick_name', this.$store.state.smartWidget.element.nick_name);
+                formData.append('text', this.$store.state.smartWidget.element.text);
                 formData.append('music', this.music);
                 formData.append('image', this.image);
                 formData.append('subscribe_handler', this.$store.state.smartWidget.element.subscribe_handler);
                 formData.append('donation_handler', this.$store.state.smartWidget.element.donation_handler);
                 formData.append('subgift_handler', this.$store.state.smartWidget.element.subgift_handler);
+                formData.append('volume', this.$store.state.smartWidget.element.volume);
 
                 if(!this.id){
                     this.$store.dispatch('smartWidget/store', formData);

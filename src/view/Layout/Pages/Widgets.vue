@@ -13,25 +13,34 @@
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <transition  name="fade">
+                    <transition name="fade">
                         <div class="card" v-if="!loading">
                             <table class="table table-responsive" style="vertical-align: top;">
                                 <tr v-for="(item, key) in smartWidgets">
                                     <td>{{ ++ key }}</td>
                                     <td>{{item.title}}</td>
-                                    <td><img v-bind:src="config.apiUrl + '/' +item.image" alt="" style="height: 50px"></td>
+                                    <td><img v-bind:src="config.apiUrl + '/' +item.image" alt="" style="height: 50px">
+                                    </td>
                                     <td>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="inputGroupPrepend2">OBS</span>
                                             </div>
                                             <input type="text" class="form-control"
-                                                   :value="config.mainUrl + '/smart-widget-id/' + item.id">
+                                                   :value="config.mainUrl + '/widgets-obs-' + item.id">
                                         </div>
                                     </td>
                                     <td>
-                                        <router-link class="btn btn-sm btn-success m-t-5" :to="{name:'widgets.edit', params:{id:item.id}}"><span class="fa fa-edit"></span></router-link>
-                                        <button class="btn btn-sm btn-danger m-t-5" v-on:click="remove(item.id)"><span class="fa fa-times"></span></button>
+                                        <button class="btn btn-sm btn-info m-t-5" v-on:click="play(item.id)"><span
+                                                class="fa fa-play"></span></button>
+                                        <router-link class="btn btn-sm btn-warning m-t-5"
+                                                     :to="{name:'widgets.obs', params:{id:item.id}}"><span
+                                                class="fa fa-eye"></span></router-link>
+                                        <router-link class="btn btn-sm btn-success m-t-5"
+                                                     :to="{name:'widgets.edit', params:{id:item.id}}"><span
+                                                class="fa fa-edit"></span></router-link>
+                                        <button class="btn btn-sm btn-danger m-t-5" v-on:click="remove(item.id)"><span
+                                                class="fa fa-times"></span></button>
                                     </td>
                                 </tr>
                             </table>
@@ -46,10 +55,11 @@
 <script>
     import {mapState} from 'vuex';
     import config from 'config';
+    import axios from 'axios';
 
     export default {
         computed: {
-            config:function () {
+            config: function () {
                 return config;
             },
             loading: function () {
@@ -63,8 +73,12 @@
             this.$store.dispatch('smartWidget/getAll');
         },
         methods: {
-            remove(id){
+            remove(id) {
                 this.$store.dispatch('smartWidget/remove', {id: id});
+            },
+
+            play(id) {
+                axios.post(config.apiUrl + '/smart_widgets/ping', {widget_id: id })
             }
         }
     };

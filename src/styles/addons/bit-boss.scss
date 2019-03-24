@@ -157,6 +157,7 @@
         right: calc(var(--height) / 2);
         border-radius: 230px 0 0 230px;
       }
+
       .health-bar {
         border-radius: 500px 0 0 500px;
       }
@@ -227,7 +228,7 @@
     bottom: 5px;
   }
 
-  #dmgrs{
+  #dmgrs {
     display: none;
   }
 
@@ -271,6 +272,6 @@
   opacity: 0;
 }
 
-.boss-export-wrapper{
+.boss-export-wrapper {
   position: absolute;
 }

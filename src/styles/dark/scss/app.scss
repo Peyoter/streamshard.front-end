@@ -21,8 +21,8 @@ File: scss
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700');
 
-/******************* 
-Global Styles 
+/*******************
+Global Styles
 *******************/
 
 .card {
@@ -37,7 +37,6 @@ body {
     background: $sidebar;
     font-family: $bodyfont;
     margin: 0;
-    overflow-x: hidden;
     color: $bodytext;
     font-weight: 300;
 }

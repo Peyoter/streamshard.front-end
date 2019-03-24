@@ -146,7 +146,7 @@
 
             },
 
-        }
+        },
     };
 
     // Todo Transfer to serverside

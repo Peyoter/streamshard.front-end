@@ -15,7 +15,7 @@
                         </div>
                         <div class="form-group">
                             <label>Множитель здоровья</label>
-                            <input class="form-control" v-model="max_health_factor">
+                            <input class="form-control" v-model="max_health_factor" type="number">
                             <small class="form-control-feedback">После смерти здоровье будет увеличено на </small>
                         </div>
                         <div class="form-group">
@@ -60,15 +60,15 @@
                             <swatches v-model="bg_color" colors="text-advanced" />
                         </div>
 
-                        <div class="forn-group">
-                            <input type="checkbox" v-model="can_heal" class="chk-col-red" id="md_checkbox_1"/>
-                            <label for="md_checkbox_1">Может лечиться</label>
-                        </div>
+                        <!--<div class="forn-group">-->
+                            <!--<input type="checkbox" v-model="can_heal" class="chk-col-red" id="md_checkbox_1"/>-->
+                            <!--<label for="md_checkbox_1">Может лечиться</label>-->
+                        <!--</div>-->
 
-                        <div class="forn-group">
-                            <input type="checkbox" v-model="can_heal_over" class="chk-col-red" id="md_checkbox_2"/>
-                            <label for="md_checkbox_2">Лечить больше макс здоровья </label>
-                        </div>
+                        <!--<div class="forn-group">-->
+                            <!--<input type="checkbox" v-model="can_heal_over" class="chk-col-red" id="md_checkbox_2"/>-->
+                            <!--<label for="md_checkbox_2">Лечить больше макс здоровья </label>-->
+                        <!--</div>-->
 
                     </div>
                     <div class="text-center">

@@ -32,7 +32,7 @@
                                         <span class="input-group-text" id="inputGroupPrepend2">OBS</span>
                                     </div>
                                     <input type="text" class="form-control"
-                                           :value="'http://streamshard.ru/overlay-export/' + overlay.slug">
+                                           :value="'http://streamshard.ru/overlay-export-' + overlay.slug">
                                 </div>
                             </div>
                         </div>
