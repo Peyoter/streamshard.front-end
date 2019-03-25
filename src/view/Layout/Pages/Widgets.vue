@@ -15,9 +15,14 @@
                 <div class="col-xs-12">
                     <transition name="fade">
                         <div class="card" v-if="!loading">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="">Cсылка для OBS</span>
+                                <input type="text" class="form-control"
+                                       :value="config.mainUrl + '/widgets-obs-all-' + user">
+                            </div>npm
                             <table class="table table-responsive" style="vertical-align: top;">
                                 <tr v-for="(item, key) in smartWidgets">
-                                    <td>{{ ++ key }}</td>
+                                    <td>{{ ++key }}</td>
                                     <td>{{item.title}}</td>
                                     <td><img v-bind:src="config.apiUrl + '/' +item.image" alt="" style="height: 50px">
                                     </td>
@@ -26,16 +31,11 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="inputGroupPrepend2">OBS</span>
                                             </div>
-                                            <input type="text" class="form-control"
-                                                   :value="config.mainUrl + '/widgets-obs-' + item.id">
                                         </div>
                                     </td>
                                     <td>
                                         <button class="btn btn-sm btn-info m-t-5" v-on:click="play(item.id)"><span
                                                 class="fa fa-play"></span></button>
-                                        <router-link class="btn btn-sm btn-warning m-t-5"
-                                                     :to="{name:'widgets.obs', params:{id:item.id}}"><span
-                                                class="fa fa-eye"></span></router-link>
                                         <router-link class="btn btn-sm btn-success m-t-5"
                                                      :to="{name:'widgets.edit', params:{id:item.id}}"><span
                                                 class="fa fa-edit"></span></router-link>
@@ -68,9 +68,15 @@
             smartWidgets: function () {
                 return this.$store.state.smartWidget.widgets;
             },
+            user: {
+                get() {
+                    return this.$store.state.settings.parameters.user_id
+                },
+            }
         },
         created() {
             this.$store.dispatch('smartWidget/getAll');
+            this.$store.dispatch('settings/getCurrent');
         },
         methods: {
             remove(id) {
@@ -78,7 +84,7 @@
             },
 
             play(id) {
-                axios.post(config.apiUrl + '/smart_widgets/ping', {widget_id: id })
+                axios.post(config.apiUrl + '/smart_widgets/ping', {widget_id: id})
             }
         }
     };

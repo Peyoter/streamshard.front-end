@@ -48,8 +48,7 @@
                                     <div class="form-group">
                                         <label>Громкость: {{ volume * 100 }} <span>%</span></label>
                                         <div>
-                                            <input type="range" id="start" v-model="volume"
-                                                   min="0" max="1" step="0.1">
+                                            <input type="range" id="start" v-model="volume" min="0" max="1" step="0.1">
                                         </div>
                                     </div>
 
@@ -193,7 +192,9 @@
             },
         },
         created() {
-            this.$store.dispatch('smartWidget/edit', {id: this.$route.params.id});
+            if(this.$route.params.id){
+                this.$store.dispatch('smartWidget/edit', {id: this.$route.params.id});
+            }
         },
         methods: {
             submitForm() {

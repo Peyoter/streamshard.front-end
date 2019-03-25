@@ -10,7 +10,8 @@ export const smartWidget = {
             nick_name: '',
             donation_handler: 0,
             subscribe_handler: 0,
-            subgift_handler: 0
+            subgift_handler: 0,
+            volume:1
         },
         widgets: [],
     },
