@@ -11,7 +11,7 @@ import OverlayBuilder from "../view/Layout/OverlayBuilder";
 import OverlayExport from "../view/Layout/Pages/OverlayExport";
 import Widgets from "../view/Layout/Pages/Widgets";
 import WidgetsForm from "../view/Layout/Pages/WidgetsForm";
-import SmartWidget from "../view/Widjets/Visual/SmartWidget";
+import WidgetsFormCreate from "../view/Layout/Pages/WidgetsСreate";
 import SmartWidgetAll from "../view/Widjets/Visual/SmartWidgetAll";
 
 Vue.use(Router);
@@ -57,13 +57,10 @@ export const router = new Router({
                     },
                 },
                 {
-                    path: '/widgets-create',
-                    components: {adminContent: WidgetsForm},
-                    name: 'widgets.create'
+                    path: '/widgets-create', components: {adminContent: WidgetsFormCreate}, name: 'widgets.create'
                 },
             ]
         },
-
         {path: '/overlay-builder-:slug', components: {globalPage: OverlayBuilder}, name: 'overlay-builder'},
         {path: '/overlay-export-:slug', components: {globalPage: OverlayExport}, name: 'overlay-export'},
         {path: '/widgets-obs-all-:user_id', name: 'widgets.obs', components: {globalPage: SmartWidgetAll}},

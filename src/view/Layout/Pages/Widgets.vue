@@ -19,7 +19,7 @@
                                 <span class="input-group-text" id="">Cсылка для OBS</span>
                                 <input type="text" class="form-control"
                                        :value="config.mainUrl + '/widgets-obs-all-' + user">
-                            </div>npm
+                            </div>
                             <table class="table table-responsive" style="vertical-align: top;">
                                 <tr v-for="(item, key) in smartWidgets">
                                     <td>{{ ++key }}</td>

@@ -8,10 +8,13 @@ export const smartWidget = {
         element: {
             title: '',
             nick_name: '',
-            donation_handler: 0,
+            text: '',
+            music: '',
+            image: '',
             subscribe_handler: 0,
+            donation_handler: 0,
             subgift_handler: 0,
-            volume:1
+            volume: 0,
         },
         widgets: [],
     },
@@ -40,6 +43,10 @@ export const smartWidget = {
                     data => commit('getShowSuccess', data),
                     error => commit('getAllFailure', error)
                 )
+        },
+
+        create({commit}, data) {
+            commit('getFlush');
         },
 
         update({commit}, formData) {
@@ -83,6 +90,18 @@ export const smartWidget = {
         getShowSuccess(state, smartWidget) {
             state.element = smartWidget;
             state.loading = false;
+        },
+        getFlush(state, smartWidget) {
+            state.element.id = '';
+            state.element.volume = 0;
+            state.element.title = '';
+            state.element.nick_name = '';
+            state.element.text = '';
+            state.element.music = '';
+            state.element.image = '';
+            state.element.subscribe_handler = 0;
+            state.element.donation_handler = 0;
+            state.element.subgift_handler = 0;
         },
         getAllSuccess(state, smartWidgets) {
             state.loading = false;
